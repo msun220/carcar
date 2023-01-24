@@ -67,37 +67,40 @@ function AppointmentList() {
 
 
     return (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>VIN</th>
-              <th>Customer Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Technician</th>
-              <th>Reason</th>
-              <th>VIP</th>
-            </tr>
-          </thead>
-          <tbody>
-            {appointments.map(appointment => {
-              return (
-                <tr key={appointment.id}>
-                  <td><button type="button" class="btn btn-danger" onClick={() => cancelAppointment(appointment)}>Cancel</button></td>
-                  <td>{ appointment.vin }</td>
-                  <td>{ appointment.customer_name }</td>
-                  <td>{ new Date(appointment.date).toLocaleDateString() }</td>
-                  <td>{ new Date(appointment.date).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}) }</td>
-                  <td>{ appointment.technician }</td>
-                  <td>{ appointment.reason }</td>
-                  <td>{ isVip(appointment.vin) }</td>
-                  <td><button type="button" class="btn btn-success" onClick={() => completeAppointment(appointment)}>Finished</button></td>
+        <div className="pt-4">
+            <h1 className="pb-2">Service Appointments</h1>
+            <table className="table table-striped">
+            <thead>
+                <tr>
+                <th></th>
+                <th>VIN</th>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Technician</th>
+                <th>Reason</th>
+                <th>VIP</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+                {appointments.map(appointment => {
+                return (
+                    <tr key={appointment.id}>
+                    <td><button type="button" class="btn btn-danger" onClick={() => cancelAppointment(appointment)}>Cancel</button></td>
+                    <td className="pt-3">{ appointment.vin }</td>
+                    <td className="pt-3">{ appointment.customer_name }</td>
+                    <td className="pt-3">{ new Date(appointment.date).toLocaleDateString() }</td>
+                    <td className="pt-3">{ new Date(appointment.date).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}) }</td>
+                    <td className="pt-3">{ appointment.technician }</td>
+                    <td className="pt-3">{ appointment.reason }</td>
+                    <td className="pt-3">{ isVip(appointment.vin) }</td>
+                    <td><button type="button" class="btn btn-success" onClick={() => completeAppointment(appointment)}>Finished</button></td>
+                    </tr>
+                );
+                })}
+            </tbody>
+            </table>
+        </div>
       );
 
 }
