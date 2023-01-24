@@ -25,6 +25,7 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentDetailEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        "id",
         "vin",
         "customer_name",
         "date",
@@ -32,15 +33,14 @@ class AppointmentDetailEncoder(ModelEncoder):
         "reason",
         "status",
         "technician",
-        "id"
     ]
-    def get_extra_data(self, o):
-        return {"technician": o.technician.name}
+    encoders = {"technician": TechnicianEncoder()}
 
 
 class AppointmentListEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        "id",
         "vin",
         "customer_name",
         "date",
@@ -48,7 +48,6 @@ class AppointmentListEncoder(ModelEncoder):
         "reason",
         "status",
         "technician",
-        "id"
     ]
     def get_extra_data(self, o):
         return {"technician": o.technician.name}
@@ -119,7 +118,6 @@ def api_cancel_appointment(request, pk):
     appointment = Appointment.objects.get(id=pk)
     appointment.status = "CANCELLED"
     appointment.save(update_fields=['status'])
-    # appointment = Appointment.objects.get(id=pk)
     return JsonResponse(
         appointment,
         encoder=AppointmentDetailEncoder,
