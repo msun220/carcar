@@ -48,6 +48,7 @@ class Sale(models.Model):
         AutomobileVO,
         related_name="automobile",
         on_delete=models.CASCADE,
+        unique=True,
     )
 
     def get_api_url(self):
