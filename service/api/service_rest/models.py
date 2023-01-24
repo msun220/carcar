@@ -22,7 +22,6 @@ class Appointment(models.Model):
     vin = models.CharField(max_length=17)
     customer_name = models.CharField(max_length=200)
     date = models.DateTimeField()
-    time = models.CharField(max_length=10)
     reason = models.TextField()
     status = models.CharField(max_length=30, default="INCOMPLETE")
 

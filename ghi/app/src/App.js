@@ -5,6 +5,8 @@ import CustomerForm from './CustomerForm';
 import SalesForm from './SalesForm';
 import SalesPersonForm from './SalesPersonForm';
 import SalesList from './SalesList';
+import AppointmentList from './AppointmentList';
+import AppointmentForm from './AppointmentForm';
 
 
 
@@ -17,8 +19,8 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="customer/new" element={<CustomerForm />} />
           <Route path="salesperson/new" element={<SalesPersonForm />} />
-          <Route path="sale/new" element={<SalesForm />} />
-          <Route path="sales" element={<SalesList />} />
+          <Route path="sale/new" element={<AppointmentForm />} />
+          <Route path="sales" element={<AppointmentList />} />
         </Routes>
       </div>
     </BrowserRouter>
