@@ -9,25 +9,6 @@ class AutomobileVOEncoder(ModelEncoder):
         "import_href",
     ]
 
-class SaleListEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "customer",
-        "automobile",
-    ]
-
-
-class SaleDetailEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "sale_price",
-        "sales_person",
-        "customer",
-        "automobile",
-    ]
-    encoders={
-        "automobile": AutomobileVOEncoder()
-    }
 
 class EmployeeEncoder(ModelEncoder):
     model = Employee
@@ -43,3 +24,22 @@ class CustomerEncoder(ModelEncoder):
         "address",
         "phone_number",
     ]
+
+
+class SaleEncoder(ModelEncoder):
+    model = Sale
+    properties = [
+        "sale_price",
+        "sales_person",
+        "customer",
+        "automobile",
+    ]
+    encoders={
+        "automobile": AutomobileVOEncoder(),
+        "customer": CustomerEncoder(),
+        "sales_person": EmployeeEncoder(),
+
+    }
+
+    def get_extra_data(self, o):
+        return {"customer": o.customer.name}

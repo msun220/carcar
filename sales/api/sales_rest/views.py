@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 from .models import AutomobileVO, Sale, Customer, Employee
-from .encoder import SaleListEncoder, SaleDetailEncoder, EmployeeEncoder, CustomerEncoder
+from .encoder import SaleEncoder, EmployeeEncoder, CustomerEncoder
 
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
@@ -12,7 +12,7 @@ def api_list_sales(request):
         sales = Sale.objects.all()
         return JsonResponse(
             {"sales": sales},
-            encoder=SaleListEncoder,
+            encoder=SaleEncoder,
             safe=False,
         )
     else:
@@ -32,7 +32,7 @@ def api_list_sales(request):
         sale = Sale.objects.create(**content)
         return JsonResponse(
             sale,
-            encoder=SaleListEncoder,
+            encoder=SaleEncoder,
             safe=False,
         )
 
@@ -43,7 +43,7 @@ def api_show_sale(request, id):
         sale = Sale.objects.get(id=id)
         return JsonResponse(
             sale,
-            encoder=SaleDetailEncoder,
+            encoder=SaleEncoder,
             safe=False
         )
     elif request.method == "DELETE":
@@ -64,7 +64,7 @@ def api_show_sale(request, id):
         sale = Sale.objects.get(id=id)
         return JsonResponse(
             sale,
-            encoder=SaleDetailEncoder,
+            encoder=SaleEncoder,
             safe=False,
         )
 

@@ -32,7 +32,7 @@ class Customer(models.Model):
 
 
 class Sale(models.Model):
-    sale_price = models.IntegerField(unique=True)
+    sale_price = models.IntegerField(unique=False)
     sales_person = models.ForeignKey(
         Employee,
         related_name="sales_person",
