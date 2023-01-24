@@ -25,6 +25,19 @@ function SalesForm () {
         setAutomobile(e.target.value)
     }
 
+    const sellAuto = async (href) => {
+      const value = href
+      const url = 'http://localhost:8100' + value + 'sell/'
+      const fetchConfig = {
+        method: "put",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      const response = await fetch(url, fetchConfig)
+
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -33,6 +46,7 @@ function SalesForm () {
         data.sales_person_id = salesPerson
         data.customer_id = customer
         data.automobile = automobile
+        console.log(data)
 
     const url = "http://localhost:8090/api/sales/"
     const fetchConfig = {
@@ -47,12 +61,14 @@ function SalesForm () {
 
     if (response.ok) {
         const newSale = await response.json()
-        console.log(newSale)
 
+
+        sellAuto(automobile)
         setSalesPerson("")
         setCustomer("")
         setAutomobile("")
         setSalePrice("")
+        fetchAutomobile()
     }
 }
 
@@ -92,9 +108,10 @@ const fetchEmployee = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      setAutomobiles(data.autos);
-    }
+      const availableAutos = data.autos.filter(automobile => automobile.status === "AVAILABLE")
+      setAutomobiles(availableAutos)
   }
+}
 
   useEffect(()=> {
     fetchAutomobile();
@@ -155,5 +172,4 @@ const fetchEmployee = async () => {
     </div>
   )
 }
-
 export default SalesForm

@@ -6,6 +6,5 @@ urlpatterns = [
     path("sales/", api_list_sales, name="api_list_sales"),
     path("sales/<int:id>/", api_show_sale, name="api_show_sale"),
     path("employees/", api_list_employees, name="api_list_employees"),
-    path("customers/", api_list_customers, name="api_list_customers")
-
+    path("customers/", api_list_customers, name="api_list_customers"),
 ]

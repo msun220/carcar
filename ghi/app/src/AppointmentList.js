@@ -86,7 +86,7 @@ function AppointmentList() {
                 {appointments.map(appointment => {
                 return (
                     <tr key={appointment.id}>
-                    <td><button type="button" class="btn btn-danger" onClick={() => cancelAppointment(appointment)}>Cancel</button></td>
+                    <td><button type="button" className="btn btn-danger" onClick={() => cancelAppointment(appointment)}>Cancel</button></td>
                     <td className="pt-3">{ appointment.vin }</td>
                     <td className="pt-3">{ appointment.customer_name }</td>
                     <td className="pt-3">{ new Date(appointment.date).toLocaleDateString() }</td>
@@ -94,7 +94,7 @@ function AppointmentList() {
                     <td className="pt-3">{ appointment.technician }</td>
                     <td className="pt-3">{ appointment.reason }</td>
                     <td className="pt-3">{ isVip(appointment.vin) }</td>
-                    <td><button type="button" class="btn btn-success" onClick={() => completeAppointment(appointment)}>Finished</button></td>
+                    <td><button type="button" className="btn btn-success" onClick={() => completeAppointment(appointment)}>Finished</button></td>
                     </tr>
                 );
                 })}

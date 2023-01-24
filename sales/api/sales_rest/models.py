@@ -5,6 +5,7 @@ from django.urls import reverse
 class AutomobileVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
     vin = models.CharField(max_length=17, unique=True)
+    status = models.CharField(max_length=200, default="AVAILABLE")
 
 
 class Employee(models.Model):

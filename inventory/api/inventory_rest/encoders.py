@@ -28,6 +28,7 @@ class AutomobileEncoder(ModelEncoder):
     model = Automobile
     properties = [
         "id",
+        "status",
         "color",
         "year",
         "vin",

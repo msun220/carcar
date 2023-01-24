@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 from .models import AutomobileVO, Sale, Customer, Employee
-from .encoder import SaleEncoder, EmployeeEncoder, CustomerEncoder
+from .encoder import AutomobileVOEncoder, SaleEncoder, EmployeeEncoder, CustomerEncoder
 
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
