@@ -19,14 +19,13 @@ def api_list_sales(request):
         content = json.loads(request.body)
 
         try:
-
             automobile_href = content["automobile"]
             automobile = AutomobileVO.objects.get(import_href=automobile_href)
             content["automobile"] = automobile
 
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid automobile id"},
+                {"message": "Could not create sale"},
                 status=400
             )
         sale = Sale.objects.create(**content)
@@ -57,7 +56,7 @@ def api_show_sale(request, id):
                 content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid automobile id"},
+                {"message": "Could not show sale"},
                 status=400
             )
         Sale.objects.filter(id=id).update(**content)

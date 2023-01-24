@@ -13,29 +13,29 @@ class AutomobileVOEncoder(ModelEncoder):
 class EmployeeEncoder(ModelEncoder):
     model = Employee
     properties = [
+        "id",
         "name",
         "employee_number",
-        "id",
     ]
 
 class CustomerEncoder(ModelEncoder):
     model = Customer
     properties = [
+        "id",
         "name",
         "address",
         "phone_number",
-        "id",
     ]
 
 
 class SaleEncoder(ModelEncoder):
     model = Sale
     properties = [
+        "id",
         "sale_price",
         "sales_person",
         "customer",
         "automobile",
-        "id",
     ]
     encoders={
         "automobile": AutomobileVOEncoder(),
