@@ -8,7 +8,6 @@ function AppointmentForm() {
     const [reason, setReason] = useState("");
     const [vin, setVin] = useState("");
     const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
     const [tech, setTech] = useState("");
 
     const [techs, setTechs] = useState([]);
@@ -35,9 +34,6 @@ function AppointmentForm() {
     const handleDateChange = (event) => {
         setDate(event.target.value);
     }
-    const handleTimeChange = (event) => {
-        setTime(event.target.value);
-    }
     const handleTechChange = (event) => {
         setTech(event.target.value);
     }
@@ -47,7 +43,6 @@ function AppointmentForm() {
         const data = {};
         data.customer_name = name;
         data.date = date;
-        data.time = time;
         data.reason = reason;
         data.vin = vin;
         data.technician_id = tech
@@ -91,13 +86,8 @@ function AppointmentForm() {
               </div>
 
               <div className="form-floating mb-3">
-                <input value={date} onChange={handleDateChange} placeholder="mm/dd/yyyy" required type="date" name="date" id="date" className="form-control"/>
-                <label htmlFor="date">Date of appointment</label>
-              </div>
-
-              <div className="form-floating mb-3">
-                <input value={time} onChange={handleTimeChange} placeholder="e.g. 10am" required type="time" name="time" id="time" className="form-control"/>
-                <label htmlFor="time">Time</label>
+                <input value={date} onChange={handleDateChange} placeholder="mm/dd/yyyy" required type="datetime-local" name="datetime-local" id="datetime-local" className="form-control"/>
+                <label htmlFor="datetime-local">Date of appointment</label>
               </div>
 
               <div className="mb-3">

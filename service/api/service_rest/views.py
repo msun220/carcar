@@ -29,7 +29,6 @@ class AppointmentDetailEncoder(ModelEncoder):
         "vin",
         "customer_name",
         "date",
-        "time",
         "reason",
         "status",
         "technician",
@@ -44,7 +43,6 @@ class AppointmentListEncoder(ModelEncoder):
         "vin",
         "customer_name",
         "date",
-        "time",
         "reason",
         "status",
         "technician",
@@ -117,6 +115,18 @@ def api_list_technician(request, pk=None):
 def api_cancel_appointment(request, pk):
     appointment = Appointment.objects.get(id=pk)
     appointment.status = "CANCELLED"
+    appointment.save(update_fields=['status'])
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentDetailEncoder,
+        safe=False
+    )
+
+
+@require_http_methods(["PUT"])
+def api_complete_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.status = "COMPLETED"
     appointment.save(update_fields=['status'])
     return JsonResponse(
         appointment,
