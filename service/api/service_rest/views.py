@@ -52,7 +52,7 @@ class AppointmentListEncoder(ModelEncoder):
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_appointments(request):
+def api_list_appointments(request): 
     if request.method == "GET":
         appointments = Appointment.objects.order_by("-date")
         return JsonResponse(

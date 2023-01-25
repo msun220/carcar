@@ -12,6 +12,19 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <div className="dropdown">
             <button className="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Inventory
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <NavLink className="dropdown-item" aria-current="page" to="manufacturers">Manufacturers List</NavLink>
+              </li>
+              <li>
+                <NavLink className="dropdown-item" aria-current="page" to="manufacturers/new">New Manufacturer</NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown">
+            <button className="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               New Members
             </button>
             <ul className="dropdown-menu">
@@ -38,7 +51,7 @@ function Nav() {
                 <NavLink className="dropdown-item" aria-current="page" to="sales">Sales Records</NavLink>
               </li>
               <li>
-                <NavLink className="dropdown-item" aria-current="page" to="sales/history">Sales History</NavLink>
+                <NavLink className="dropdown-item" aria-current="page" to="sales/history">Sales By Employee</NavLink>
               </li>
             </ul>
           </div>
