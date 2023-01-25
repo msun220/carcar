@@ -78,7 +78,6 @@ function SalesForm () {
         data.sales_person_id = salesPerson
         data.customer_id = customer
         data.automobile = automobile
-        console.log(data)
 
         const salesUrl = "http://localhost:8090/api/sales/"
         const fetchConfig = {
