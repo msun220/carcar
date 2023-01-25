@@ -5,6 +5,7 @@ from .models import AutomobileVO, Sale, Customer, Employee
 from .encoder import SaleEncoder, EmployeeEncoder, CustomerEncoder
 
 
+
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
 
