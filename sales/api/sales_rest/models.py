@@ -19,7 +19,6 @@ class Employee(models.Model):
         return reverse("api_list_employees", kwargs={"pk": self.pk})
 
 
-
 class Customer(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)

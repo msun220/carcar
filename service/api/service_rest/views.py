@@ -8,7 +8,6 @@ from django.db import IntegrityError
 
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
-
     if request.method == "GET":
         appointments = Appointment.objects.order_by("-date")
         return JsonResponse(
@@ -27,7 +26,6 @@ def api_list_appointments(request):
 
 @require_http_methods(["GET", "DELETE"])
 def api_show_appointment(request, pk):
-
     if request.method == "GET":
         try:
             appointment = Appointment.objects.get(id=pk)
@@ -47,7 +45,6 @@ def api_show_appointment(request, pk):
 
 @require_http_methods(["GET", "POST", "DELETE"])
 def api_list_technician(request, pk=None):
-
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
@@ -76,7 +73,6 @@ def api_list_technician(request, pk=None):
 
 @require_http_methods(["PUT"])
 def api_cancel_appointment(request, pk):
-
     try:
         appointment = Appointment.objects.get(id=pk)
         appointment.status = "CANCELLED"
@@ -94,7 +90,6 @@ def api_cancel_appointment(request, pk):
 
 @require_http_methods(["PUT"])
 def api_complete_appointment(request, pk):
-
     try:
         appointment = Appointment.objects.get(id=pk)
         appointment.status = "COMPLETED"

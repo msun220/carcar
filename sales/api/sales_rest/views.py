@@ -7,7 +7,6 @@ from .encoder import SaleEncoder, EmployeeEncoder, CustomerEncoder
 
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
-
     if request.method == "GET":
         sales = Sale.objects.all()
         return JsonResponse(
@@ -36,7 +35,6 @@ def api_list_sales(request):
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_sale(request, id):
-
     if request.method == "GET":
         try:
             sale = Sale.objects.get(id=id)
@@ -74,7 +72,6 @@ def api_show_sale(request, id):
 
 @require_http_methods(["GET", "POST"])
 def api_list_employees(request):
-
     if request.method == "GET":
         employees = Employee.objects.all()
         return JsonResponse(
@@ -94,7 +91,6 @@ def api_list_employees(request):
 
 @require_http_methods(["GET", "POST"])
 def api_list_customers(request):
-
     if request.method == "GET":
         customers = Customer.objects.all()
         return JsonResponse(

@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import api_list_appointments, api_show_appointment, api_list_technician, api_cancel_appointment, api_complete_appointment
 
+
 urlpatterns = [
     path("appointments/", api_list_appointments, name="api_list_appointments"),
     path("appointments/", api_list_appointments, name="api_create_appointment"),
