@@ -46,7 +46,6 @@ function SalesForm () {
         data.sales_person_id = salesPerson
         data.customer_id = customer
         data.automobile = automobile
-        console.log(data)
 
     const url = "http://localhost:8090/api/sales/"
     const fetchConfig = {
@@ -63,7 +62,7 @@ function SalesForm () {
         const newSale = await response.json()
 
 
-        sellAuto(automobile)
+        await sellAuto(automobile)
         setSalesPerson("")
         setCustomer("")
         setAutomobile("")
