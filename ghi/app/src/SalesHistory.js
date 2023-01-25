@@ -1,51 +1,64 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 function SalesHistory() {
 
+  const [searchSalesPerson, setSearchSalesPerson] = useState([])
 
-  const [searchSalesPerson, setSearchSalesPerson] = useState("")
-  const handleSearchSalesPersonChange = (e) => {
-      setSearchSalesPerson(e.target.value)
+
+  const [filterValue, setFilterValue] = useState("")
+  const handleFilterValueChange = (e) => {
+    setFilterValue(e.target.value)
   }
 
-  const [salesPersons, setSalesPersons] = useState([]);
-  const fetchSalesPersons = async () => {
-      const url = 'http://localhost:8090/api/employees/';
-      const response = await fetch(url);
+  const [sales, setSales] = useState([])
+  const [allSales, setAllSales] = useState([])
 
-      if (response.ok) {
-          const data = await response.json();
-          setSalesPersons(data.employees);
-      }
+  const fetchData = async () => {
+    const response = await fetch("http://localhost:8090/api/sales/")
+    const data = await response.json()
+
+    setSales(data.sales)
+    console.log(sales)
   }
 
   useEffect(() => {
-      fetchSalesPersons();
-  }, []);
+    fetchData()
+  }, [])
 
-  const [searchedSales, setSearchedSales] = useState([]);
-  const searchSales = async () => {
-    const selectedSalesPerson = salesPersons.find(salesPerson => salesPerson.id === searchSalesPerson);
-    const url = `http://localhost:8090/api/sales?sales_person=${selectedSalesPerson.name}`;
-    const response = await fetch(url);
-    if (response.ok) {
-        const data = await response.json();
-        setSearchedSales(data.sales);
-    }
-}
+
+  const fetchSalesPerson = async () => {
+    const response = await fetch("http://localhost:8090/api/employees/")
+    const salesPersonData = await response.json()
+    setSearchSalesPerson(salesPersonData.employees)
+  }
+
+  useEffect(() => {
+    fetchSalesPerson()
+  }, [])
+
+
+  const searchSales = () => {
+    if (searchSalesPerson === "") {
+      return sales }
+  //   } else {
+  //     return sales.filter(sale =>
+  //       sale.name.includes(filterValue)
+  //     )
+  //   }
+  // }
+
 
 
   return (
     <div className="mb-3">
-        <select value={searchSalesPerson} onChange={handleSearchSalesPersonChange}>
-            <option value="" disabled>Select Sales Person</option>
-            {salesPersons.map(salesPerson => (
-                <option key={salesPerson.id} value={salesPerson.id}>
-                    {salesPerson.name}
-                </option>
+        <select onChange={handleFilterValueChange}>
+          <option value="">Select a sales associate</option>
+            {searchSales().map(person => (
+              <option key={person.id} value={person.name}>
+                {person.name}
+              </option>
             ))}
         </select>
-        <button onClick={searchSales}>Search</button>
         <table className="table table-hover">
             <thead>
                 <tr>
@@ -56,7 +69,7 @@ function SalesHistory() {
                 </tr>
             </thead>
             <tbody>
-                {searchedSales.map(sale => (
+                {sales.map(sale => (
                     <tr key={sale.id}>
                         <td>{sale.sales_person.name}</td>
                         <td>{sale.customer}</td>
@@ -68,6 +81,7 @@ function SalesHistory() {
         </table>
     </div>
 )
+}
 }
 
 export default SalesHistory
