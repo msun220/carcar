@@ -43,7 +43,7 @@ function VehicleList() {
             </tbody>
             </table>
         </div>
-      )
+    )
 
 }
 
