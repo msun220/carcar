@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
 
 function SalesHistory() {
-  const [salesPeople, setSalesPeeople] = useState([]);
-  const fetchSalesPerson = async () => {
+  const [salesPeople, setSalesPeople] = useState([]);
+  const fetchSalesPeople = async () => {
     const response = await fetch("http://localhost:8090/api/employees/");
     const salesPersonData = await response.json();
-    setSalesPeeople(salesPersonData.employees);
+    setSalesPeople(salesPersonData.employees);
   };
 
   useEffect(() => {
-    fetchSalesPerson();
+    fetchSalesPeople();
   }, []);
 
   const [sales, setSales] = useState([]);
@@ -44,11 +43,11 @@ function SalesHistory() {
       <form>
         <select className="form-select" onChange={handleFilterValueChange}>
           <option value="">Select a sales associate</option>
-          {salesPeople.map((person) => {
-            <option key={ person.id } value={ person.name }>
-              { person.name }
-            </option>
-          })}
+          {salesPeople.map((person) => (
+            <option key={person.id} value={person.name}>
+              {person.name}
+            </option>)
+          )}
         </select>
       </form>
       <table className="table table-hover">
@@ -62,12 +61,12 @@ function SalesHistory() {
         </thead>
         <tbody>
           {searchSales().map((sale) => {
-            <tr key={ sale.id }>
-              <td>{ sale.sales_person.name }</td>
-              <td>{ sale.customer }</td>
-              <td>{ sale.automobile.vin }</td>
-              <td>{ sale.sale_price }</td>
-            </tr>
+            <tr key={sale.id}>
+              <td>{sale.sales_person.name}</td>
+              <td>{sale.customer}</td>
+              <td>{sale.automobile.vin}</td>
+              <td>{sale.sale_price}</td>
+            </tr>;
           })}
         </tbody>
       </table>

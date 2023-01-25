@@ -4,11 +4,12 @@ import sys
 import time
 import json
 import requests
-from sales_rest.models import AutomobileVO
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
+
+from sales_rest.models import AutomobileVO
 
 
 def get_automobile():
