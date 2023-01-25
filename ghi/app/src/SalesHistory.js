@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 
 function SalesHistory() {
-  const [salesPeople, setSalesPeeople] = useState([]);
+  const [salesPeople, setSalesPeople] = useState([]);
   const fetchSalesPerson = async () => {
     const response = await fetch("http://localhost:8090/api/employees/");
     const salesPersonData = await response.json();
-    setSalesPeeople(salesPersonData.employees);
+    setSalesPeople(salesPersonData.employees);
   };
 
   useEffect(() => {
@@ -44,11 +44,11 @@ function SalesHistory() {
       <form>
         <select className="form-select" onChange={handleFilterValueChange}>
           <option value="">Select a sales associate</option>
-          {salesPeople.map((person) => {
+          {salesPeople.map((person) => (
             <option key={ person.id } value={ person.name }>
               { person.name }
             </option>
-          })}
+          ))}
         </select>
       </form>
       <table className="table table-hover">
@@ -61,14 +61,14 @@ function SalesHistory() {
           </tr>
         </thead>
         <tbody>
-          {searchSales().map((sale) => {
+          {searchSales().map((sale) => (
             <tr key={ sale.id }>
               <td>{ sale.sales_person.name }</td>
               <td>{ sale.customer }</td>
               <td>{ sale.automobile.vin }</td>
               <td>{ sale.sale_price }</td>
             </tr>
-          })}
+          ))}
         </tbody>
       </table>
     </div>

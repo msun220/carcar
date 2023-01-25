@@ -79,6 +79,7 @@ function AppointmentList() {
         <table className="table table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th>VIN</th>
                     <th>Customer Name</th>
                     <th>Date</th>
@@ -86,6 +87,7 @@ function AppointmentList() {
                     <th>Technician</th>
                     <th>Reason</th>
                     <th>VIP</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
