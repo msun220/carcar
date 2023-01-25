@@ -9,6 +9,7 @@ import AppointmentList from './AppointmentList';
 import AppointmentForm from './AppointmentForm';
 import TechnicianForm from './TechnicianForm';
 import SalesHistory from './SalesHistory';
+import ServiceHistory from './ServiceHistory';
 
 
 function App() {
