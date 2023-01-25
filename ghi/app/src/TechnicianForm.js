@@ -22,7 +22,7 @@ function TechnicianForm () {
         data.name = name;
         data.employee_number = number;
 
-        const techUrl = "http://localhost:8080/api/technician/";
+        const techUrl = "http://localhost:8080/api/technicians/";
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
