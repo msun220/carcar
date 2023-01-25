@@ -33,7 +33,6 @@ function App() {
           <Route path="sales/history" element={<SalesHistory />} />
           <Route path="appointments/history" element={<ServiceHistory />} />
           <Route path="manufacturers" element={<ManufacturerList/>} />
-          <Route path="manufacturers" element={<ManufacturerList/>} />
           <Route path="manufacturers/new" element={<ManufacturerForm/>} />
           <Route path="automobiles" element={<AutomobileList/>} />
           <Route path="automobiles/new" element={<AutomobileForm/>} />
