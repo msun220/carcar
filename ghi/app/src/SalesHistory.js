@@ -41,8 +41,9 @@ function SalesHistory() {
 
 
   return (
-    <div className="mb-3">
-        <select onChange={handleFilterValueChange}>
+    <div className="mb-3 pt-3">
+      <form>
+        <select className="form-select" onChange={handleFilterValueChange}>
           <option value="">Select a sales associate</option>
             {salesPeople.map(person => (
               <option key={person.id} value={person.name}>
@@ -50,26 +51,27 @@ function SalesHistory() {
               </option>
             ))}
         </select>
-        <table className="table table-hover">
-            <thead>
-                <tr>
-                    <th>Sale Person</th>
-                    <th>Customer</th>
-                    <th>Vin</th>
-                    <th>Sale Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {searchSales().map(sale => (
-                    <tr key={sale.id}>
-                        <td>{sale.sales_person.name}</td>
-                        <td>{sale.customer}</td>
-                        <td>{sale.automobile.vin}</td>
-                        <td>{sale.sale_price}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+      </form>
+      <table className="table table-hover">
+          <thead>
+              <tr>
+                  <th>Sale Person</th>
+                  <th>Customer</th>
+                  <th>Vin</th>
+                  <th>Sale Price</th>
+              </tr>
+          </thead>
+          <tbody>
+              {searchSales().map(sale => (
+                  <tr key={sale.id}>
+                      <td>{sale.sales_person.name}</td>
+                      <td>{sale.customer}</td>
+                      <td>{sale.automobile.vin}</td>
+                      <td>{sale.sale_price}</td>
+                  </tr>
+              ))}
+          </tbody>
+      </table>
     </div>
 )
 
