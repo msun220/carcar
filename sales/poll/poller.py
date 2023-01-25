@@ -11,6 +11,8 @@ django.setup()
 
 # Import models from sales_rest, here.
 # from sales_rest.models import Something
+# poller has been changed to 5seconds only because we noticed that submitting a particular form took a VERY long time.
+
 from sales_rest.models import AutomobileVO
 
 def get_automobile():

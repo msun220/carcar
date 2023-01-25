@@ -15,7 +15,7 @@ function ManufacturerList() {
 
     return (
         <div className="pt-4">
-            <h1 className="pb-2">Service Appointments</h1>
+            <h1 className="pb-2">Our manufacturers</h1>
             <table className="table table-striped">
             <thead>
                 <tr>

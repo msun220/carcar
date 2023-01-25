@@ -12,6 +12,8 @@ import SalesHistory from './SalesHistory';
 import ServiceHistory from './ServiceHistory';
 import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
+import AutomobileList from './AutomobileList';
+import AutomobileForm from './AutomobileForm';
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route path="manufacturers" element={<ManufacturerList/>} />
           <Route path="manufacturers" element={<ManufacturerList/>} />
           <Route path="manufacturers/new" element={<ManufacturerForm/>} />
+          <Route path="automobiles" element={<AutomobileList/>} />
+          <Route path="automobiles/new" element={<AutomobileForm/>} />
         </Routes>
       </div>
     </BrowserRouter>
