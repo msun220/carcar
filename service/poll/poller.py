@@ -4,17 +4,15 @@ import sys
 import time
 import json
 import requests
+from service_rest.models import AutomobileVO
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
-# Import models from service_rest, here.
-# from service_rest.models import Something
-# poller has been changed to 5seconds only because we noticed that submitting a particular form took a VERY long time.
-from service_rest.models import AutomobileVO
 
 def poll():
+
     while True:
         print('Service poller polling for data')
         try:

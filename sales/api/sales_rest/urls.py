@@ -1,6 +1,6 @@
 from django.urls import path
-
 from .views import api_list_customers, api_list_sales, api_show_sale, api_list_employees
+
 
 urlpatterns = [
     path("sales/", api_list_sales, name="api_list_sales"),

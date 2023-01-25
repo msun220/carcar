@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 from .models import AutomobileVO, Sale, Customer, Employee
-from .encoder import AutomobileVOEncoder, SaleEncoder, EmployeeEncoder, CustomerEncoder
+from .encoder import SaleEncoder, EmployeeEncoder, CustomerEncoder
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
@@ -22,7 +23,6 @@ def api_list_sales(request):
             automobile_href = content["automobile"]
             automobile = AutomobileVO.objects.get(import_href=automobile_href)
             content["automobile"] = automobile
-
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Could not create sale"},
@@ -39,7 +39,12 @@ def api_list_sales(request):
 def api_show_sale(request, id):
 
     if request.method == "GET":
-        sale = Sale.objects.get(id=id)
+        try:
+            sale = Sale.objects.get(id=id)
+        except Sale.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
         return JsonResponse(
             sale,
             encoder=SaleEncoder,
@@ -80,15 +85,12 @@ def api_list_employees(request):
         )
     else:
         content = json.loads(request.body)
-
-
         employee = Employee.objects.create(**content)
         return JsonResponse(
             employee,
             encoder=EmployeeEncoder,
             safe=False,
         )
-
 
 
 @require_http_methods(["GET", "POST"])
@@ -103,8 +105,6 @@ def api_list_customers(request):
         )
     else:
         content = json.loads(request.body)
-
-
         customer = Customer.objects.create(**content)
         return JsonResponse(
             customer,
