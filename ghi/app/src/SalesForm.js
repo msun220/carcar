@@ -1,41 +1,73 @@
 import React, { useState, useEffect } from 'react'
 
 function SalesForm () {
+
     const [salesPersons, setSalesPersons] = useState([])
     const [customers, setCustomers] = useState([])
     const [automobiles, setAutomobiles] = useState([])
+
+    const fetchEmployee = async () => {
+        const url = 'http://localhost:8090/api/employees/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+          const data = await response.json();
+          setSalesPersons(data.employees);
+        }
+    }
+
+    const fetchCustomer = async () => {
+        const url = 'http://localhost:8090/api/customers/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+            const data = await response.json();
+            setCustomers(data.customers);
+        }
+    }
+
+    const fetchAutomobile = async () => {
+        const url = 'http://localhost:8100/api/automobiles/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+          const data = await response.json();
+          const availableAutos = data.autos.filter(automobile => automobile.status === "AVAILABLE")
+          console.log(availableAutos)
+          setAutomobiles(availableAutos)
+        }
+    }
+
+    useEffect(()=> {fetchCustomer();}, [])
+    useEffect(()=> {fetchAutomobile();}, [])
+    useEffect(()=> {fetchEmployee();}, [])
+
 
     const [salePrice, setSalePrice] = useState("")
     const handleSalePriceChange = (e) => {
         setSalePrice(e.target.value)
     }
-
     const [salesPerson, setSalesPerson] = useState("")
     const handleSalePersonChange = (e) => {
         setSalesPerson(e.target.value)
     }
-
     const [customer, setCustomer] = useState("")
     const handleCustomerChange = (e) => {
         setCustomer(e.target.value)
     }
-
     const [automobile, setAutomobile] = useState("")
     const handleAutomobileChange = (e) => {
         setAutomobile(e.target.value)
     }
 
     const sellAuto = async (href) => {
-      const value = href
-      const url = 'http://localhost:8100' + value + 'sell/'
-      const fetchConfig = {
-        method: "put",
-        headers: {
-          'Content-Type': 'application/json'
+        const value = href
+        const url = 'http://localhost:8100' + value + 'sell/'
+        const fetchConfig = {
+            method: "put",
+            headers: {'Content-Type': 'application/json'}
         }
-      }
-      const response = await fetch(url, fetchConfig)
-
+        const response = await fetch(url, fetchConfig)
     }
 
     const handleSubmit = async (event) => {
@@ -48,76 +80,25 @@ function SalesForm () {
         data.automobile = automobile
         console.log(data)
 
-    const url = "http://localhost:8090/api/sales/"
-    const fetchConfig = {
-        method: "post",
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
+        const salesUrl = "http://localhost:8090/api/sales/"
+        const fetchConfig = {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const salesResponse = await fetch(salesUrl, fetchConfig)
+
+        if (salesResponse.ok) {
+            setSalesPerson("")
+            setCustomer("")
+            setAutomobile("")
+            setSalePrice("")
+            await sellAuto(automobile)
+            fetchAutomobile()
         }
     }
-
-    const response = await fetch(url, fetchConfig)
-
-    if (response.ok) {
-        const newSale = await response.json()
-
-
-        sellAuto(automobile)
-        setSalesPerson("")
-        setCustomer("")
-        setAutomobile("")
-        setSalePrice("")
-        fetchAutomobile()
-    }
-}
-
-const fetchEmployee = async () => {
-    const url = 'http://localhost:8090/api/employees/';
-    const response = await fetch(url);
-
-    if (response.ok) {
-      const data = await response.json();
-      setSalesPersons(data.employees);
-    }
-  }
-
-  useEffect(()=> {
-    fetchEmployee();
-  }, [])
-
-
-  const fetchCustomer = async () => {
-    const url = 'http://localhost:8090/api/customers/';
-    const response = await fetch(url);
-
-    if (response.ok) {
-      const data = await response.json();
-      setCustomers(data.customers);
-    }
-  }
-
-  useEffect(()=> {
-    fetchCustomer();
-  }, [])
-
-
-  const fetchAutomobile = async () => {
-    const url = 'http://localhost:8100/api/automobiles/';
-    const response = await fetch(url);
-
-    if (response.ok) {
-      const data = await response.json();
-      const availableAutos = data.autos.filter(automobile => automobile.status === "AVAILABLE")
-      setAutomobiles(availableAutos)
-  }
-}
-
-  useEffect(()=> {
-    fetchAutomobile();
-  }, [])
-
-
 
   return (
     <div className="row">
