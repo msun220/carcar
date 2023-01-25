@@ -46,8 +46,8 @@ function SalesHistory() {
           {salesPeople.map((person) => (
             <option key={person.id} value={person.name}>
               {person.name}
-            </option>)
-          )}
+            </option>
+          ))}
         </select>
       </form>
       <table className="table table-hover">
@@ -60,14 +60,14 @@ function SalesHistory() {
           </tr>
         </thead>
         <tbody>
-          {searchSales().map((sale) => {
+          {searchSales().map((sale) => (
             <tr key={sale.id}>
               <td>{sale.sales_person.name}</td>
               <td>{sale.customer}</td>
               <td>{sale.automobile.vin}</td>
               <td>{sale.sale_price}</td>
-            </tr>;
-          })}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
