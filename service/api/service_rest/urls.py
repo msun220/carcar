@@ -1,10 +1,6 @@
 from django.urls import path
 from .views import api_list_appointments, api_show_appointment, api_list_technician, api_cancel_appointment, api_complete_appointment
 
-
-# multiple paths here with the same url and function - listed only for devs to understand which paths have which http methods.
-
-
 urlpatterns = [
     path("appointments/", api_list_appointments, name="api_list_appointments"),
     path("appointments/", api_list_appointments, name="api_create_appointment"),

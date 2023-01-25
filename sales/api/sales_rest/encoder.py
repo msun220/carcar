@@ -19,6 +19,7 @@ class EmployeeEncoder(ModelEncoder):
         "employee_number",
     ]
 
+
 class CustomerEncoder(ModelEncoder):
     model = Customer
     properties = [
@@ -38,11 +39,10 @@ class SaleEncoder(ModelEncoder):
         "customer",
         "automobile",
     ]
-    encoders={
+    encoders = {
         "automobile": AutomobileVOEncoder(),
         "customer": CustomerEncoder(),
         "sales_person": EmployeeEncoder(),
-
     }
 
     def get_extra_data(self, o):

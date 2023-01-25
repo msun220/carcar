@@ -4,16 +4,12 @@ import sys
 import time
 import json
 import requests
+from sales_rest.models import AutomobileVO
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
-# Import models from sales_rest, here.
-# from sales_rest.models import Something
-# poller has been changed to 5seconds only because we noticed that submitting a particular form took a VERY long time.
-
-from sales_rest.models import AutomobileVO
 
 def get_automobile():
     response = requests.get('http://inventory-api:8000/api/automobiles/')

@@ -227,12 +227,18 @@ def api_vehicle_model(request, pk):
             response.status_code = 404
             return response
 
+
 @require_http_methods(["PUT"])
 def update_sale_status(request, vin):
 
-    automobile = Automobile.objects.get(vin=vin)
-    automobile.status = "SOLD"
-    automobile.save(update_fields=['status'])
+    try:
+        automobile = Automobile.objects.get(vin=vin)
+        automobile.status = "SOLD"
+        automobile.save(update_fields=['status'])
+    except Automobile.DoesNotExist:
+        response = JsonResponse({"message": "Does not exist"})
+        response.status_code = 404
+        return response
     return JsonResponse(
         automobile,
         encoder=AutomobileEncoder,
