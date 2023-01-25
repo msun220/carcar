@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
+
 function ServiceHistory() {
 
     const [filterValue, setFilterValue] = useState("");
     const [appointments, setAppointments] = useState([]);
     const [automobiles, setAutomobiles] = useState([]);
-
 
     const fetchAppointments = async () => {
         const response = await fetch('http://localhost:8080/api/appointments/');
@@ -26,12 +26,15 @@ function ServiceHistory() {
             setAutomobiles(vinList)
         }
     }
-    useEffect(() => {fetchAutomobiles()}, []);
+    useEffect(() => {
+    fetchAutomobiles()
+    }, []);
 
 
     const handleFilterVal = (event) => {
         setFilterValue(event.target.value.toUpperCase())
     }
+
 
     const filteredAppointments = () => {
         if (filterValue === " ") {

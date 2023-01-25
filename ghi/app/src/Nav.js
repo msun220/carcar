@@ -58,7 +58,7 @@ function Nav() {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <NavLink className="dropdown-item" aria-current="page" to="sale/new">New Sale</NavLink>
+                <NavLink className="dropdown-item" aria-current="page" to="sales/new">New Sale</NavLink>
               </li>
               <li>
                 <NavLink className="dropdown-item" aria-current="page" to="sales">Sales Records</NavLink>
@@ -74,7 +74,7 @@ function Nav() {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <NavLink className="dropdown-item" aria-current="page" to="appointment/new">New Appointment</NavLink>
+                <NavLink className="dropdown-item" aria-current="page" to="appointments/new">New Appointment</NavLink>
               </li>
               <li>
                 <NavLink className="dropdown-item" aria-current="page" to="appointments">Appointment Records</NavLink>
