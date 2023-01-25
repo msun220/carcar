@@ -33,7 +33,6 @@ function SalesForm () {
         if (response.ok) {
           const data = await response.json();
           const availableAutos = data.autos.filter(automobile => automobile.status === "AVAILABLE")
-          console.log(availableAutos)
           setAutomobiles(availableAutos)
         }
     }

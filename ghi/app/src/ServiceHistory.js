@@ -59,7 +59,7 @@ function ServiceHistory() {
                 </div>
             </form>
 
-            <table className="table table-striped">
+            <table className="table table-hover">
             <thead>
                 <tr>
                 <th>VIN</th>

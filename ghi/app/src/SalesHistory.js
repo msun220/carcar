@@ -2,7 +2,27 @@ import { useState, useEffect } from "react"
 
 function SalesHistory() {
 
-  const [searchSalesPerson, setSearchSalesPerson] = useState([])
+  const [salesPeople, setSalesPeeople] = useState([])
+  const fetchSalesPerson = async () => {
+    const response = await fetch("http://localhost:8090/api/employees/")
+    const salesPersonData = await response.json()
+    setSalesPeeople(salesPersonData.employees)
+  }
+
+  useEffect(() => {
+    fetchSalesPerson()
+  }, [])
+
+  const [sales, setSales] = useState([])
+  const fetchSales = async () => {
+    const response = await fetch("http://localhost:8090/api/sales/")
+    const data = await response.json()
+    setSales(data.sales)
+  }
+
+  useEffect(() => {
+    fetchSales()
+  }, [])
 
 
   const [filterValue, setFilterValue] = useState("")
@@ -10,50 +30,21 @@ function SalesHistory() {
     setFilterValue(e.target.value)
   }
 
-  const [sales, setSales] = useState([])
-  const [allSales, setAllSales] = useState([])
-
-  const fetchData = async () => {
-    const response = await fetch("http://localhost:8090/api/sales/")
-    const data = await response.json()
-
-    setSales(data.sales)
-    console.log(sales)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-
-  const fetchSalesPerson = async () => {
-    const response = await fetch("http://localhost:8090/api/employees/")
-    const salesPersonData = await response.json()
-    setSearchSalesPerson(salesPersonData.employees)
-  }
-
-  useEffect(() => {
-    fetchSalesPerson()
-  }, [])
-
 
   const searchSales = () => {
-    if (searchSalesPerson === "") {
-      return sales }
-  //   } else {
-  //     return sales.filter(sale =>
-  //       sale.name.includes(filterValue)
-  //     )
-  //   }
-  // }
-
+    if (filterValue === "") {
+      return sales
+    } else {
+      return sales.filter(sale => sale.sales_person.name.includes(filterValue))
+    }
+  }
 
 
   return (
     <div className="mb-3">
         <select onChange={handleFilterValueChange}>
           <option value="">Select a sales associate</option>
-            {searchSales().map(person => (
+            {salesPeople.map(person => (
               <option key={person.id} value={person.name}>
                 {person.name}
               </option>
@@ -69,7 +60,7 @@ function SalesHistory() {
                 </tr>
             </thead>
             <tbody>
-                {sales.map(sale => (
+                {searchSales().map(sale => (
                     <tr key={sale.id}>
                         <td>{sale.sales_person.name}</td>
                         <td>{sale.customer}</td>
@@ -81,7 +72,7 @@ function SalesHistory() {
         </table>
     </div>
 )
-}
+
 }
 
 export default SalesHistory
