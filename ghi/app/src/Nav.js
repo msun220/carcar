@@ -50,6 +50,9 @@ function Nav() {
               <li>
                 <NavLink className="dropdown-item" aria-current="page" to="appointments">Appointment Records</NavLink>
               </li>
+              <li>
+                <NavLink className="dropdown-item" aria-current="page" to="appointments/history">Appointment History</NavLink>
+              </li>
             </ul>
           </div>
           </ul>
