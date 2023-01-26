@@ -7,6 +7,7 @@ function MainPage() {
           The premiere solution for automobile dealership
           management!
         </p>
+        <img src="https://tinyurl.com/mr2pw73j" className="img-fluid" />
       </div>
     </div>
   );
