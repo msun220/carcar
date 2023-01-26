@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
   const fetchAppointments = async () => {
@@ -42,8 +43,7 @@ function AppointmentList() {
 
   const cancelAppointment = async (appointment) => {
     const aptId = String(appointment.id);
-    const cancelUrl =
-      "http://localhost:8080/api/appointments/" + aptId + "/cancel/";
+    const cancelUrl ="http://localhost:8080/api/appointments/" + aptId + "/cancel/";
     const fetchConfig = {
       method: "put",
       headers: {
@@ -58,8 +58,7 @@ function AppointmentList() {
 
   const completeAppointment = async (appointment) => {
     const aptId = String(appointment.id);
-    const completeUrl =
-      "http://localhost:8080/api/appointments/" + aptId + "/complete/";
+    const completeUrl ="http://localhost:8080/api/appointments/" + aptId + "/complete/";
     const fetchConfig = {
       method: "put",
       headers: {
@@ -92,38 +91,23 @@ function AppointmentList() {
         <tbody>
           {appointments.map((appointment) => {
             return (
-              <tr key={appointment.id}>
+              <tr key={ appointment.id }>
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={() => cancelAppointment(appointment)}
-                  >
-                    Cancel
-                  </button>
+                  <button type="button" className="btn btn-danger" onClick={() => cancelAppointment(appointment)}>Cancel</button>
                 </td>
-                <td className="pt-3">{appointment.vin}</td>
-                <td className="pt-3">{appointment.customer_name}</td>
+                <td className="pt-3">{ appointment.vin }</td>
+                <td className="pt-3">{ appointment.customer_name }</td>
+                <td className="pt-3">{ new Date(appointment.date).toLocaleDateString() }</td>
                 <td className="pt-3">
-                  {new Date(appointment.date).toLocaleDateString()}
+                  { new Date(appointment.date).toLocaleTimeString(navigator.language,{
+                    hour: "2-digit", minute: "2-digit"
+                  })}
                 </td>
-                <td className="pt-3">
-                  {new Date(appointment.date).toLocaleTimeString(
-                    navigator.language,
-                    { hour: "2-digit", minute: "2-digit" }
-                  )}
-                </td>
-                <td className="pt-3">{appointment.technician}</td>
-                <td className="pt-3">{appointment.reason}</td>
-                <td className="pt-3">{isVip(appointment.vin)}</td>
+                <td className="pt-3">{ appointment.technician }</td>
+                <td className="pt-3">{ appointment.reason }</td>
+                <td className="pt-3">{ isVip(appointment.vin) }</td>
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={() => completeAppointment(appointment)}
-                  >
-                    Finished
-                  </button>
+                  <button type="button" className="btn btn-success" onClick={() => completeAppointment(appointment)}>Complete</button>
                 </td>
               </tr>
             );

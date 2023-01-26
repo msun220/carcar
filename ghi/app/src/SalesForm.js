@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 
 
 function SalesForm() {
@@ -112,14 +112,7 @@ function SalesForm() {
           <h1>Record a sale</h1>
           <form onSubmit={handleSubmit} id="create-customer-form">
             <div className="mb-3">
-              <select
-                onChange={handleCustomerChange}
-                value={customer}
-                placeholder="Customer Name"
-                required
-                name="customer"
-                className="form-select"
-              >
+              <select onChange={handleCustomerChange} value={customer} placeholder="Customer Name" required name="customer" className="form-select">
                 <option value="">Choose a customer</option>
                 {customers.map((customer) => {
                   return (
@@ -131,16 +124,7 @@ function SalesForm() {
               </select>
             </div>
             <div className="mb-3">
-              <select
-                onChange={handleSalePersonChange}
-                value={salesPerson}
-                placeholder="Sales Associate"
-                required
-                name="sales_person"
-                type="text"
-                id="sales_person"
-                className="form-select"
-              >
+              <select onChange={handleSalePersonChange} value={salesPerson} placeholder="Sales Associate" required name="sales_person" type="text" id="sales_person" className="form-select">
                 <option value="">Choose a Sales Associate</option>
                 {salesPersons.map((salesPerson) => {
                   return (
@@ -152,16 +136,7 @@ function SalesForm() {
               </select>
             </div>
             <div className="mb-3">
-              <select
-                onChange={handleAutomobileChange}
-                value={automobile}
-                placeholder="Automobile"
-                required
-                name="automobile"
-                type="text"
-                id="automobile"
-                className="form-select"
-              >
+              <select onChange={handleAutomobileChange} value={automobile} placeholder="Automobile" required name="automobile" type="text" id="automobile" className="form-select">
                 <option value="">Choose an Automobile</option>
                 {automobiles.map((automobile) => {
                   return (
@@ -173,16 +148,7 @@ function SalesForm() {
               </select>
             </div>
             <div className="form-floating mb-3">
-              <input
-                onChange={handleSalePriceChange}
-                value={salePrice}
-                placeholder="Sale Price"
-                required
-                name="sale_price"
-                type="number"
-                id="sale_price"
-                className="form-control"
-              />
+              <input onChange={handleSalePriceChange} value={salePrice} placeholder="Sale Price" required name="sale_price" type="number" id="sale_price" className="form-control"/>
               <label htmlFor="sale_price">Sale Price</label>
             </div>
             <button className="btn btn-primary">Record</button>

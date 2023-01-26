@@ -6,8 +6,8 @@ function ManufacturerList() {
     const fetchManufacturers = async () => {
         const response = await fetch("http://localhost:8100/api/manufacturers/");
         if (response.ok) {
-        const data = await response.json();
-        setManufacturers(data.manufacturers);
+            const data = await response.json();
+            setManufacturers(data.manufacturers);
         }
     };
 
@@ -27,9 +27,9 @@ function ManufacturerList() {
             <tbody>
             {manufacturers.map((manufacturer) => {
                 return (
-                <tr key={ manufacturer.id }>
-                    <td>{ manufacturer.name }</td>
-                </tr>
+                    <tr key={ manufacturer.id }>
+                        <td>{ manufacturer.name }</td>
+                    </tr>
                 );
             })}
             </tbody>

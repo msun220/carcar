@@ -6,8 +6,8 @@ function VehicleList() {
     const fetchVehicles = async () => {
         const response = await fetch("http://localhost:8100/api/models/");
         if (response.ok) {
-        const data = await response.json();
-        setVehicles(data.models);
+            const data = await response.json();
+            setVehicles(data.models);
         }
     };
 
@@ -29,19 +29,14 @@ function VehicleList() {
                 <tbody>
                 {vehicles.map((vehicle) => {
                     return (
-                    <tr key={ vehicle.id }>
-                        <td>{ vehicle.name }</td>
-                        <td>{ vehicle.manufacturer.name }</td>
-                        <td>
-                            <img
-                                src={ vehicle.picture_url }
-                                className="img-thumbnail"
-                                width="200"
-                                height="220"
-                            />
-                        </td>
-                    </tr>
-                    );
+                        <tr key={ vehicle.id }>
+                            <td>{ vehicle.name }</td>
+                            <td>{ vehicle.manufacturer.name }</td>
+                            <td>
+                                <img src={ vehicle.picture_url } className="img-thumbnail" width="200" height="220"/>
+                            </td>
+                        </tr>
+                    )
                 })}
                 </tbody>
             </table>

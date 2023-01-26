@@ -23,8 +23,8 @@ function VehicleForm() {
         const response = await fetch(url);
 
         if (response.ok) {
-        const data = await response.json();
-        setManufacturers(data.manufacturers);
+            const data = await response.json();
+            setManufacturers(data.manufacturers);
         }
     };
 
@@ -66,43 +66,20 @@ function VehicleForm() {
                     <h1>Record Vehicle Model</h1>
                     <form onSubmit={handleSubmit} id="create-customer-form">
                         <div className="form-floating mb-3">
-                            <input
-                                onChange={handleNameChange}
-                                value={name}
-                                placeholder="Vehicle model name "
-                                required
-                                name="name"
-                                className="form-control"
-                            />
+                            <input onChange={handleNameChange} value={name} placeholder="Vehicle model name " required name="name" className="form-control"/>
                             <label htmlFor="name">Vehicle model name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input
-                                onChange={handlePicUrlChange}
-                                value={picUrl}
-                                placeholder="Picture URL"
-                                required
-                                name="picUrl"
-                                type="text"
-                                id="picUrl"
-                                className="form-control"
-                            />
+                            <input onChange={handlePicUrlChange} value={picUrl} placeholder="Picture URL" required name="picUrl" type="text" id="picUrl" className="form-control"/>
                             <label htmlFor="picUrl">Picture URL</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <select
-                                onChange={handleManufacturerChange}
-                                value={manufacturer}
-                                placeholder="Manufacturer"
-                                required
-                                name="manufacturer"
-                                className="form-select"
-                            >
+                            <select onChange={handleManufacturerChange} value={manufacturer} placeholder="Manufacturer" required name="manufacturer" className="form-select">
                                 <option value="">Choose a manufacturer</option>
                                 {manufacturers.map((manufacturer) => {
                                     return (
                                         <option key={ manufacturer.id } value={ manufacturer.id }>
-                                        { manufacturer.name }
+                                            { manufacturer.name }
                                         </option>
                                     );
                                 })}
