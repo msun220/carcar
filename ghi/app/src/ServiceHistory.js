@@ -9,10 +9,11 @@ function ServiceHistory() {
     const fetchAppointments = async () => {
         const response = await fetch("http://localhost:8080/api/appointments/");
         if (response.ok) {
-        const allData = await response.json();
-        setAppointments(allData.appointments);
+            const allData = await response.json();
+            setAppointments(allData.appointments);
         }
     };
+
     useEffect(() => {
         fetchAppointments();
     }, []);
@@ -20,12 +21,13 @@ function ServiceHistory() {
     const fetchAutomobiles = async () => {
         const response = await fetch("http://localhost:8100/api/automobiles/");
         if (response.ok) {
-        const data = await response.json();
-        const vinList = [];
-        data.autos.map((automobile) => vinList.push(automobile.vin));
-        setAutomobiles(vinList);
+            const data = await response.json();
+            const vinList = [];
+            data.autos.map((automobile) => vinList.push(automobile.vin));
+            setAutomobiles(vinList);
         }
     };
+
     useEffect(() => {
         fetchAutomobiles();
     }, []);
@@ -36,36 +38,28 @@ function ServiceHistory() {
 
     const filteredAppointments = () => {
         if (filterValue === " ") {
-        return appointments;
+            return appointments;
         } else {
-        return appointments.filter((appointment) =>
-            appointment.vin.toUpperCase().includes(filterValue)
-        );
+            return appointments.filter((appointment) =>
+                appointment.vin.toUpperCase().includes(filterValue)
+            );
         }
     };
 
     const isVip = (vin) => {
         if (automobiles.includes(vin)) {
-        return "VIP treatment received.";
+            return "VIP treatment received.";
         } else {
-        return "Not a VIP.";
+            return "Not a VIP.";
         }
     };
 
     return (
-        <>
         <div className="pt-4">
             <h1 className="pb-2">Service Appointments</h1>
             <form>
                 <div className="form mb-3">
-                    <input
-                    value={filterValue}
-                    onChange={handleFilterVal}
-                    placeholder="Search by VIN"
-                    name="filter-value"
-                    id="filter-value"
-                    className="form-control"
-                    />
+                    <input value={filterValue} onChange={handleFilterVal} placeholder="Search by VIN" name="filter-value" id="filter-value" className="form-control"/>
                 </div>
             </form>
             <table className="table table-hover">
@@ -92,9 +86,9 @@ function ServiceHistory() {
                                 </td>
                                 <td className="pt-3">
                                     {new Date(appointment.date).toLocaleTimeString(
-                                    navigator.language,
-                                    { hour: "2-digit", minute: "2-digit" }
-                                    )}
+                                    navigator.language,{
+                                        hour: "2-digit", minute: "2-digit" 
+                                    })}
                                 </td>
                                 <td className="pt-3">{ appointment.technician }</td>
                                 <td className="pt-3">{ appointment.reason }</td>
@@ -106,7 +100,6 @@ function ServiceHistory() {
                 </tbody>
             </table>
         </div>
-        </>
     );
 }
 

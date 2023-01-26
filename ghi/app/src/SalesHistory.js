@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 function SalesHistory() {
   const [salesPeople, setSalesPeople] = useState([]);
   const fetchSalesPeople = async () => {
