@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "./Nav";
 
 
 function ServiceHistory() {
@@ -57,7 +56,6 @@ function ServiceHistory() {
 
     return (
         <>
-            <Nav />
             <div className="pt-4">
                 <h1 className="pb-2">Service Appointments</h1>
                 <form>

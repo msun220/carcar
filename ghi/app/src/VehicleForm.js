@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./Nav";
 
 
 function VehicleForm() {
@@ -62,7 +61,6 @@ function VehicleForm() {
 
     return (
         <>
-            <Nav />
             <div className="row">
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">

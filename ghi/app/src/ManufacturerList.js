@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./Nav";
 
 
 function ManufacturerList() {
@@ -17,28 +16,22 @@ function ManufacturerList() {
     }, []);
 
     return (
-        <>
-            <Nav />
-            <div className="pt-4">
-            <h1 className="pb-2">Our manufacturers</h1>
-            <table className="table table-striped">
-                <thead>
-                <tr>
-                    <th>Manufacturer</th>
-                </tr>
-                </thead>
-                <tbody>
-                {manufacturers.map((manufacturer) => {
-                    return (
-                        <tr key={ manufacturer.id }>
-                            <td>{ manufacturer.name }</td>
-                        </tr>
-                    );
-                })}
-                </tbody>
-            </table>
-            </div>
-        </>
+        <table className="table table-striped">
+            <thead>
+            <tr>
+                <th>Manufacturer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {manufacturers.map((manufacturer) => {
+                return (
+                    <tr key={ manufacturer.id }>
+                        <td>{ manufacturer.name }</td>
+                    </tr>
+                );
+            })}
+            </tbody>
+        </table>
     );
 }
 

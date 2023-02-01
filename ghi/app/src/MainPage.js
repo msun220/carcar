@@ -112,7 +112,7 @@ function MainPage() {
             </div>
             <div className="col" style={{paddingTop: 40, }}>
               <button type="button" style={{ width: "200px", height: "120px",}} className="btn bg-light p-2 text-dark bg-opacity-75 fs-4">
-              <NavLink className="text-decoration-none text-dark" aria-current="page" to="appointments/history">Appointments by Technician</NavLink>
+              <NavLink className="text-decoration-none text-dark" aria-current="page" to="appointments/history">Appointments by VIN</NavLink>
               </button>
             </div>
           </div>

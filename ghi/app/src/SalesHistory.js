@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./Nav";
 
 
 function SalesHistory() {
@@ -42,7 +41,6 @@ function SalesHistory() {
 
   return (
     <>
-      <Nav />
       <div className="mb-3 pt-3">
         <form>
           <select className="form-select" onChange={handleFilterValueChange}>

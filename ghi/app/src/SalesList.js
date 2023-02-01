@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Nav from "./Nav";
 
 
 function SalesList() {
@@ -18,7 +17,6 @@ function SalesList() {
 
   return (
     <>
-      <Nav />
       <table className="table table-hover">
         <thead>
           <tr>

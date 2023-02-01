@@ -21,7 +21,7 @@ import VehicleList from "./VehicleList";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Nav /> */}
+      <Nav />
       <div className="container-fluid" style={{paddingRight: 0, paddingLeft: 0}}>
         <Routes>
           <Route path="/" element={<MainPage />} />

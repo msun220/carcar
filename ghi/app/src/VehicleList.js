@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./Nav";
 
 
 function VehicleList() {
@@ -18,7 +17,6 @@ function VehicleList() {
 
     return (
         <>
-            <Nav />
             <div className="pt-4">
                 <h1 className="pb-2">Vehicle Models</h1>
                 <table className="table table-striped">
