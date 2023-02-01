@@ -46,9 +46,11 @@ function CustomerForm() {
 
   return (
     <>
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+    <div className="bg-image"
+      style={{backgroundImage: "url('https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp')", height: "100vh", width:"100vw", }}>
+    <div className="row" style={{ paddingTop: "100px" }}>
+      <div className="offset-3 col-6 bg-light">
+        <div className="p-4 mt-4">
           <h1>Add a new customer</h1>
           <form onSubmit={handleSubmit} id="create-customer-form">
             <div className="form-floating mb-3">
@@ -67,6 +69,7 @@ function CustomerForm() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   </>
   );

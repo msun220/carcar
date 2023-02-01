@@ -56,8 +56,9 @@ function ServiceHistory() {
 
     return (
         <>
+        <div className="container" style={{ paddingTop: 40}}>
             <div className="pt-4">
-                <h1 className="pb-2">Service Appointments</h1>
+                <h1 className="pb-2">Search Service Appointment</h1>
                 <form>
                     <div className="form mb-3">
                         <input value={filterValue} onChange={handleFilterVal} placeholder="Search by VIN" name="filter-value" id="filter-value" className="form-control"/>
@@ -101,6 +102,7 @@ function ServiceHistory() {
                     </tbody>
                 </table>
             </div>
+        </div>
         </>
     );
 }

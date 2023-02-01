@@ -68,10 +68,12 @@ function AppointmentForm() {
 
   return (
     <>
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Make an appointment</h1>
+    <div className="bg-image"
+      style={{backgroundImage: "url('https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp')", height: "100vh", width:"100vw", }}>
+    <div className="row" style={{ paddingTop: "90px" }}>
+      <div className="offset-3 col-6 bg-light">
+        <div className="p-4 mt-4">
+          <h1>Make a new appointment</h1>
           <form className={formClass} onSubmit={handleSubmit} id="create-appointment-form">
             <div className="form-floating mb-3">
               <input value={name} onChange={handleNameChange} placeholder="Customer Name" required type="text" name="name" id="name" className="form-control"/>
@@ -110,6 +112,7 @@ function AppointmentForm() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   </>
   );
