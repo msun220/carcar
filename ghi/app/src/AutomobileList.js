@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Nav from "./Nav";
 
 
 function AutomobileList() {
@@ -16,6 +17,8 @@ function AutomobileList() {
     }, []);
 
     return (
+        <>
+        <Nav />
         <div className="pt-4">
             <h1 className="pb-2">Our Automobiles</h1>
             <table className="table table-striped">
@@ -43,6 +46,7 @@ function AutomobileList() {
             </tbody>
             </table>
         </div>
+    </>
     );
 }
 

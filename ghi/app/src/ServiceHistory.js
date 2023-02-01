@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Nav from "./Nav";
 
 
 function ServiceHistory() {
@@ -55,51 +56,54 @@ function ServiceHistory() {
     };
 
     return (
-        <div className="pt-4">
-            <h1 className="pb-2">Service Appointments</h1>
-            <form>
-                <div className="form mb-3">
-                    <input value={filterValue} onChange={handleFilterVal} placeholder="Search by VIN" name="filter-value" id="filter-value" className="form-control"/>
-                </div>
-            </form>
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                    <th>VIN</th>
-                    <th>Customer Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Technician</th>
-                    <th>Reason</th>
-                    <th>VIP</th>
-                    <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredAppointments().map((appointment) => {
-                        return (
-                            <tr key={ appointment.id }>
-                                <td className="pt-3">{ appointment.vin }</td>
-                                <td className="pt-3">{ appointment.customer_name }</td>
-                                <td className="pt-3">
-                                    {new Date(appointment.date).toLocaleDateString()}
-                                </td>
-                                <td className="pt-3">
-                                    {new Date(appointment.date).toLocaleTimeString(
-                                    navigator.language,{
-                                        hour: "2-digit", minute: "2-digit" 
-                                    })}
-                                </td>
-                                <td className="pt-3">{ appointment.technician }</td>
-                                <td className="pt-3">{ appointment.reason }</td>
-                                <td className="pt-3">{ isVip(appointment.vin) }</td>
-                                <td className="pt-3">{ appointment.status }</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <Nav />
+            <div className="pt-4">
+                <h1 className="pb-2">Service Appointments</h1>
+                <form>
+                    <div className="form mb-3">
+                        <input value={filterValue} onChange={handleFilterVal} placeholder="Search by VIN" name="filter-value" id="filter-value" className="form-control"/>
+                    </div>
+                </form>
+                <table className="table table-hover">
+                    <thead>
+                        <tr>
+                        <th>VIN</th>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Technician</th>
+                        <th>Reason</th>
+                        <th>VIP</th>
+                        <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredAppointments().map((appointment) => {
+                            return (
+                                <tr key={ appointment.id }>
+                                    <td className="pt-3">{ appointment.vin }</td>
+                                    <td className="pt-3">{ appointment.customer_name }</td>
+                                    <td className="pt-3">
+                                        {new Date(appointment.date).toLocaleDateString()}
+                                    </td>
+                                    <td className="pt-3">
+                                        {new Date(appointment.date).toLocaleTimeString(
+                                        navigator.language,{
+                                            hour: "2-digit", minute: "2-digit"
+                                        })}
+                                    </td>
+                                    <td className="pt-3">{ appointment.technician }</td>
+                                    <td className="pt-3">{ appointment.reason }</td>
+                                    <td className="pt-3">{ isVip(appointment.vin) }</td>
+                                    <td className="pt-3">{ appointment.status }</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
 }
 

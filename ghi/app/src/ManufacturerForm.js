@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Nav from "./Nav";
 
 
 function ManufacturerForm() {
@@ -28,6 +29,8 @@ function ManufacturerForm() {
   };
 
   return (
+    <>
+    <Nav />
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
@@ -42,6 +45,7 @@ function ManufacturerForm() {
         </div>
       </div>
     </div>
+  </>
   );
 }
 
