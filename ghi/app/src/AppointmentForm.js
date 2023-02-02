@@ -74,7 +74,7 @@ function AppointmentForm() {
         <div className="container text-start">
       <div className="row" style={{ paddingTop: "90px" }}>
         <div className="offset-3 col-6 bg-light">
-          <div className="p-4 mt-4 text-dark">
+          <div className="p-2 mt-4 text-dark">
             <h1>Make a new appointment</h1>
             <form className={formClass} onSubmit={handleSubmit} id="create-appointment-form">
               <div className="form-floating mb-3">
