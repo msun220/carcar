@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container">
+      <div className="container-fluid" style={{paddingRight: 0, paddingLeft: 0, }}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="customer/new" element={<CustomerForm />} />

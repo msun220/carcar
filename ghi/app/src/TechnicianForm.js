@@ -46,30 +46,37 @@ function TechnicianForm() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Register a new technician</h1>
-          <form onSubmit={handleSubmit} id="create-technician-form">
-            <div className="form-floating mb-3">
-              <input value={name} onChange={handleNameChange} placeholder="Technician Name" required type="text" name="name" id="name" className="form-control"/>
-              <label htmlFor="name">Technician Name</label>
+    <>
+      <div className="carousel-inner">
+        <img src='https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp' className='opacity-50 w-100' style={{ height: "100vh"}} />
+        <div className="carousel-caption d-none d-md-block h-100 pt-5">
+          <div className="row" style={{ paddingTop: "100px" }}>
+            <div className="offset-3 col-6 bg-light">
+              <div className="p-4 mt-4 text-dark">
+                <h1>Register a new technician</h1>
+                <form onSubmit={handleSubmit} id="create-technician-form">
+                  <div className="form-floating mb-3">
+                    <input value={name} onChange={handleNameChange} placeholder="Technician Name" required type="text" name="name" id="name" className="form-control"/>
+                    <label htmlFor="name">Technician Name</label>
+                  </div>
+                  <div className="form-floating mb-3">
+                    <input value={number} onChange={handleNumberChange} placeholder="Technician Number" required type="number" name="technician_number" id="technician_number" className="form-control"/>
+                    <label htmlFor="technician_number">Technician Number</label>
+                  </div>
+                  <div className={warningClass} role="alert">
+                    {" "}Technician number already exists. Enter unique technician number.{" "}
+                  </div>
+                  <div className={successClass} role="alert">
+                    {" "}Successfully registered.{" "}
+                  </div>
+                  <button className="btn btn-primary">Create</button>
+                </form>
+              </div>
             </div>
-            <div className="form-floating mb-3">
-              <input value={number} onChange={handleNumberChange} placeholder="Technician Number" required type="number" name="technician_number" id="technician_number" className="form-control"/>
-              <label htmlFor="technician_number">Technician Number</label>
-            </div>
-            <div className={warningClass} role="alert">
-              {" "}Technician number already exists. Enter unique technician number.{" "}
-            </div>
-            <div className={successClass} role="alert">
-              {" "}Successfully registered.{" "}
-            </div>
-            <button className="btn btn-primary">Create</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

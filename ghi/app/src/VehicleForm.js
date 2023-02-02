@@ -60,36 +60,43 @@ function VehicleForm() {
     };
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Record Vehicle Model</h1>
-                    <form onSubmit={handleSubmit} id="create-customer-form">
-                        <div className="form-floating mb-3">
-                            <input onChange={handleNameChange} value={name} placeholder="Vehicle model name " required name="name" className="form-control"/>
-                            <label htmlFor="name">Vehicle model name</label>
+        <>
+            <div className="carousel-inner">
+                <img src='https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp' className='opacity-50 w-100' style={{ height: "100vh"}} />
+                <div className="carousel-caption d-none d-md-block h-100 pt-5">
+                    <div className="row" style={{ paddingTop: "100px" }}>
+                        <div className="offset-3 col-6 bg-light">
+                            <div className="p-4 mt-4 text-dark">
+                                <h1>Record Vehicle Model</h1>
+                                <form onSubmit={handleSubmit} id="create-customer-form">
+                                    <div className="form-floating mb-3">
+                                        <input onChange={handleNameChange} value={name} placeholder="Vehicle model name " required name="name" className="form-control"/>
+                                        <label htmlFor="name">Vehicle model name</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <input onChange={handlePicUrlChange} value={picUrl} placeholder="Picture URL" required name="picUrl" type="text" id="picUrl" className="form-control"/>
+                                        <label htmlFor="picUrl">Picture URL</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <select onChange={handleManufacturerChange} value={manufacturer} placeholder="Manufacturer" required name="manufacturer" className="form-select">
+                                            <option value="">Choose a manufacturer</option>
+                                            {manufacturers.map((manufacturer) => {
+                                                return (
+                                                    <option key={ manufacturer.id } value={ manufacturer.id }>
+                                                        { manufacturer.name }
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    </div>
+                                    <button className="btn btn-primary">Record</button>
+                                </form>
+                            </div>
                         </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={handlePicUrlChange} value={picUrl} placeholder="Picture URL" required name="picUrl" type="text" id="picUrl" className="form-control"/>
-                            <label htmlFor="picUrl">Picture URL</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={handleManufacturerChange} value={manufacturer} placeholder="Manufacturer" required name="manufacturer" className="form-select">
-                                <option value="">Choose a manufacturer</option>
-                                {manufacturers.map((manufacturer) => {
-                                    return (
-                                        <option key={ manufacturer.id } value={ manufacturer.id }>
-                                            { manufacturer.name }
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                        </div>
-                        <button className="btn btn-primary">Record</button>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
