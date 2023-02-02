@@ -70,7 +70,7 @@ function AppointmentForm() {
     <>
     <div className="carousel-inner">
       <img src='https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp' className='opacity-50 w-100' style={{ height: "100vh"}} />
-      <div className="carousel-caption d-none d-md-block h-100 pt-5">
+      <div className="carousel-caption d-none d-md-block h-100 pt-2">
         <div className="container text-start">
       <div className="row" style={{ paddingTop: "90px" }}>
         <div className="offset-3 col-6 bg-light">
