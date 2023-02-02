@@ -68,51 +68,55 @@ function AppointmentForm() {
 
   return (
     <>
-    <div className="bg-image"
-      style={{backgroundImage: "url('https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp')", height: "100vh", width:"100vw", }}>
-    <div className="row" style={{ paddingTop: "90px" }}>
-      <div className="offset-3 col-6 bg-light">
-        <div className="p-4 mt-4">
-          <h1>Make a new appointment</h1>
-          <form className={formClass} onSubmit={handleSubmit} id="create-appointment-form">
-            <div className="form-floating mb-3">
-              <input value={name} onChange={handleNameChange} placeholder="Customer Name" required type="text" name="name" id="name" className="form-control"/>
-              <label htmlFor="name">Customer Name</label>
+    <div className="carousel-inner">
+      <img src='https://us.moodmedia.com/wp-content/uploads/2021/10/4-pillars-feature.webp' className='opacity-50 w-100' style={{ height: "100vh"}} />
+      <div className="carousel-caption d-none d-md-block h-100 pt-5">
+        <div className="container text-start">
+      <div className="row" style={{ paddingTop: "90px" }}>
+        <div className="offset-3 col-6 bg-light">
+          <div className="p-4 mt-4 text-dark">
+            <h1>Make a new appointment</h1>
+            <form className={formClass} onSubmit={handleSubmit} id="create-appointment-form">
+              <div className="form-floating mb-3">
+                <input value={name} onChange={handleNameChange} placeholder="Customer Name" required type="text" name="name" id="name" className="form-control"/>
+                <label htmlFor="name">Customer Name</label>
+              </div>
+              <div className="form mb-3">
+                <label htmlFor="reason" className="form-label">Reason for visit</label>
+                <textarea value={reason} onChange={handleReasonChange} className="form-control" required name="reason" id="reason" rows="3"></textarea>
+              </div>
+              <div className="form-floating mb-3">
+                <input value={vin} onChange={handleVinChange} placeholder="Vehicle VIN" required type="text" name="vin" id="vin" className="form-control"/>
+                <label htmlFor="vin">Vehicle VIN</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input value={date} onChange={handleDateChange} placeholder="mm/dd/yyyy" required type="datetime-local" name="datetime-local" id="datetime-local" className="form-control"/>
+                <label htmlFor="datetime-local">Date of appointment</label>
+              </div>
+              <div className="mb-3">
+                <select value={tech} onChange={handleTechChange} required name="tech" id="tech" className="form-select">
+                  <option value="">Choose one of our friendly technicians</option>
+                  {techs.map((tech) => {
+                    return (
+                      <option key={ tech.id } value={ tech.id }>
+                        { " " }
+                        { tech.name }{ " " }
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <button className="btn btn-primary">Submit</button>
+            </form>
+            <div className={successClass} role="alert">
+              {" "}
+              Appointment made. See you soon.{" "}
             </div>
-            <div className="form mb-3">
-              <label htmlFor="reason" className="form-label">Reason for visit</label>
-              <textarea value={reason} onChange={handleReasonChange} className="form-control" required name="reason" id="reason" rows="3"></textarea>
-            </div>
-            <div className="form-floating mb-3">
-              <input value={vin} onChange={handleVinChange} placeholder="Vehicle VIN" required type="text" name="vin" id="vin" className="form-control"/>
-              <label htmlFor="vin">Vehicle VIN</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input value={date} onChange={handleDateChange} placeholder="mm/dd/yyyy" required type="datetime-local" name="datetime-local" id="datetime-local" className="form-control"/>
-              <label htmlFor="datetime-local">Date of appointment</label>
-            </div>
-            <div className="mb-3">
-              <select value={tech} onChange={handleTechChange} required name="tech" id="tech" className="form-select">
-                <option value="">Choose one of our friendly technicians</option>
-                {techs.map((tech) => {
-                  return (
-                    <option key={ tech.id } value={ tech.id }>
-                      { " " }
-                      { tech.name }{ " " }
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <button className="btn btn-primary">Submit</button>
-          </form>
-          <div className={successClass} role="alert">
-            {" "}
-            Appointment made. See you soon.{" "}
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
     </div>
   </>
   );

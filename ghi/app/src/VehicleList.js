@@ -8,7 +8,7 @@ function ModelColumn(props) {
                 const vehicle = data;
                 return (
                 <div key={ vehicle.id } className="card mb-3 shadow">
-                    <img src={ vehicle.picture_url } className="card-img-top" />
+                    <img src={ vehicle.picture_url } className="card-img-top" style={{ height: "250px"}} />
                     <div className="card-body">
                         <h5 className="card-title">{ vehicle.name }</h5>
                         <h6 className="card-subtitle mb-2 text-muted">
@@ -45,7 +45,7 @@ function VehicleList() {
                     const details = await modelResponse.json();
                     columns[i].push(details);
                     i+=1;
-                    if (i > 2) {
+                    if (i > 3) {
                         i = 0;
                     }
                 } else {

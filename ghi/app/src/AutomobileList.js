@@ -24,18 +24,10 @@ function AutomobileList() {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                <img src="https://cdn-ds.com/blogs-media/sites/215/2020/12/31173655/Friendly-Salary-Paid-Salesman-Speaking-with-Happy-Client-at-No-Commission-Dealership-_A_b.jpg" className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <img src="https://www.bmw.com.mo/content/dam/bmw/common/all-models/i-series/i8/2014/at-a-glance/i8_stagepresentation.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1447941819928.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                <img src="https://www.uticanational.com/contentassets/d2a486dc93c3491e9d254b63825efe63/auto-dealers-banner-1600-550.jpg?w=800" className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
+                    <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fwallpapersmug.com%2Fdownload%2F2560x1080%2Ffb070a%2Fluxurious-bmw-concept-8-series-car.jpg" className="d-block w-100" alt="..." />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -46,7 +38,7 @@ function AutomobileList() {
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>
-            </div>
+        </div>
         <div className="container" style={{ paddingTop: 40}}>
             <div className="pt-4">
                 <h1 className="pb-2">Our Automobiles</h1>

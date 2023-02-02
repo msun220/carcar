@@ -78,7 +78,7 @@ function MainPage() {
         </div>
       </div>
       <div className="carousel-caption d-none d-md-block h-75">
-        <h2 className="text-dark display-2">Welcome Back Sabina!</h2>
+        <h2 className="text-dark display-2">Welcome Back!</h2>
       </div>
       <div className="carousel-caption d-none d-md-block justify-content-center h-50 pb-5">
         <div className="container" style={{ width: "800px", height: "600px"}}>
